@@ -50,15 +50,22 @@
     └── cover-image/    # 封面圖生成（OpenAI gpt-image-2）
 ```
 
-## 封面人物基準照（重要規範）
+## 封面規範（兩條線必讀）
+
+### 1. 人物基準照
 **所有 YouTube 封面必須使用 `assets/persona/三師爸人物形象照.png` 作為人物基準。**
+呼叫 `cover-image` Skill 時帶 `--edit assets/persona/三師爸人物形象照.png` 參數。
+gpt-image-2 在 edit 模式下會延續人物的臉、髮型、體型、穿著（黑色連帽外套、眼鏡）。
 
-實作方式：呼叫 `cover-image` Skill 時帶 `--edit assets/persona/三師爸人物形象照.png` 參數。gpt-image-2 在 edit 模式下會延續人物的臉、髮型、體型、穿著（黑色連帽外套、眼鏡）。
+### 2. 視覺風格指南
+**所有封面 prompt 都必須依 `assets/style/cover-style.md` 撰寫**，維持頻道識別：
+- 深海軍藍背景 + 電子青光線
+- 亮黃 / 白色超粗黑體中文標題（粗黑描邊）
+- 人物固定在畫面右側，左側放主題視覺
+- 集數標籤（如「Claude 基本功 EP##」）與副標位置固定
+- 完整色票、構圖網格、prompt 範本見 cover-style.md
 
-prompt 撰寫要點：
-- 在描述中說明「畫面右側放置這位男性教師（戴眼鏡、黑色連帽外套）」之類的位置語意
-- **不要**改變人物五官、外套顏色、眼鏡（gpt-image-2 在 edit 模式下會盡量保留，但 prompt 矛盾會破功）
-- 場景、背景、配色、文字標題都可以自由設計
+> 規則衝突時的優先序：人物基準照 > 風格指南 > 個別影片 prompt 變化
 
 ## Skills 使用須知
 `skills/` 內的三個 Skill 是給本專案專用的副本（其中兩個複製自全域 Skill），目的是讓 Codex 也能在同一專案內讀到它們的 `SKILL.md` 與腳本。
