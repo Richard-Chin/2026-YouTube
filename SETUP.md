@@ -12,7 +12,7 @@
 4. **以選定標題建資料夾**，平行產出：
    - 封面圖（OpenAI gpt-image-2，自動套用你的人物與頻道風格）
    - YouTube 描述、社群貼文、SEO 關鍵字
-5. **打包**：剪好的影片 + 字幕 + 純文字 + 封面 + metadata，全部放在 `output/<標題>/`
+5. **打包**：剪好的影片 + 字幕 + 純文字 + 封面 + metadata，全部放在 `output/<標題> [Claude]/` 或 `output/<標題> [Codex]/`（依執行的 AI Agent 標記，方便 A/B 比較）
 
 整個流程由 **Claude Code** 與 **OpenAI Codex** 透過 `HANDOFF.md` 接力完成。
 

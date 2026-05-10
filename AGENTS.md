@@ -45,15 +45,15 @@
 3. 跑 `smart-cut` → `<影片代號>.cut.mp4`
 4. ffmpeg 抽音訊 → 跑 `audio-to-srt` → `.srt` + `.txt`
 5. 讀字幕生 10 個標題 → `working/<影片代號>/titles.md`，**停下等使用者挑**
-6. 使用者挑完 → 把標題清洗成合法資料夾名（去除 `？！：／＼?!:/\\<>|"*`）→ 建 `output/<標題>/`
+6. 使用者挑完 → 把標題清洗成合法資料夾名（去除 `？！：／＼?!:/\\<>|"*`）→ 建 `output/<標題> [Codex]/`（你是 Codex，必加 `[Codex]` 後綴；資料夾內檔案不加後綴）
 7. 平行：
    - **封面 SOP**（缺一不可）：
      a. `Read assets/style/reference-thumbnails.png`（看頻道既有封面）
      b. `Read assets/style/cover-style.md`（讀完整風格指南）
      c. 依影片主角決定主色：Claude=橘 / Codex=藍 / 兩者並用=橘+藍
-     d. 撰寫 prompt → **用你內建的 image 2 生圖工具**產封面（人物基準照當 reference image），存到 `output/<標題>/cover.png`
+     d. 撰寫 prompt → **用你內建的 image 2 生圖工具**產封面（人物基準照當 reference image），存到 `output/<標題> [Codex]/cover.png`
    - AI 寫 metadata.md（描述 / 社群 / SEO，**SEO 區塊必含「YouTube 標籤欄位（直接複製）」逗號分隔版**）
-8. 把 .cut.mp4、.srt、.txt、封面、metadata 全搬進 `output/<標題>/`，影片改名為 `<標題>.mp4`
+8. 把 .cut.mp4、.srt、.txt、封面、metadata 全搬進 `output/<標題> [Codex]/`，影片改名為 `<標題>.mp4`
 9. 更新 `HANDOFF.md`
 
 ## 資料夾結構

@@ -14,7 +14,7 @@
   - audio-to-srt 完成清字（37 段、530 字）
   - 標題候選 10 個 → 使用者選 #7
   - 封面（gpt-image-2 low）+ metadata.md 全部產出
-  - 全部素材在 `output/你還在手動填課程計畫嗎 AI Agent 教師工作流實演/`
+  - 全部素材在 `output/你還在手動填課程計畫嗎 AI Agent 教師工作流實演 [Claude]/`
 - **環境驗證紀錄**：
   - ffmpeg ✅、Groq Key（`~/.groq_api_key`）✅
   - OpenAI Key 存放於 `~/.openai.env`，呼叫前用 `export $(cat ~/.openai.env | xargs)` 載入
@@ -60,7 +60,7 @@
 - 全流程實證：smart-cut → audio-to-srt → 10 標題 → 使用者選 #7 → 封面 + metadata
 - 學到：smart-cut 對停頓多的口播者要把 threshold 拉到 0.06；margin 用 `0sec,0.1sec` 開頭不留緩衝聽起來最俐落
 - 學到：transcribe_groq.py 直接吃 mp4 沒問題（內部用 ffmpeg 處理）
-- 交付路徑：`output/你還在手動填課程計畫嗎 AI Agent 教師工作流實演/`
+- 交付路徑：`output/你還在手動填課程計畫嗎 AI Agent 教師工作流實演 [Claude]/`
 
 ### 2026-05-10（下午）— Claude Code 工作流定稿
 - 新增第三個 Skill `smart-cut`（auto-editor 包裝）
