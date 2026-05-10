@@ -13,6 +13,7 @@ YouTube 影片自動化工作流：原始素材丟進來，AI 接力產出剪好
 3. 完成後會在 `output/` 拿到字幕檔、封面、文案、標題候選
 
 ## 共用 Skill
+- `skills/smart-cut/` — 智能剪口播（auto-editor）
 - `skills/audio-to-srt/` — 語音轉字幕（Groq Whisper）
 - `skills/cover-image/` — 封面圖生成（gpt-image-2）
 

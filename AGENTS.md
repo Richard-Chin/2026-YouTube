@@ -12,18 +12,32 @@
 
 ## 專案目標
 使用者把原始影片丟進 `raw/`，AI 接力完成：
-1. 剪輯 + 上字幕
-2. 封面圖
-3. 描述 / 社群貼文 / SEO 關鍵字
-4. 10 個吸引人的標題候選
+1. **智能剪口播** → 去靜音
+2. **語音轉字幕** → SRT + 純文字稿
+3. **生 10 個吸引人的標題候選**，等使用者挑一個
+4. 使用者選定後 → **以標題建資料夾**，平行產出封面、描述、社群貼文、SEO
+
+最終交付到 `output/<YouTube 標題>/`：剪好的影片、SRT、txt、封面、metadata.md。
 
 ## 你可以使用的 Skills
-本專案 `skills/` 目錄存放兩個共用 Skill 的離線副本，讀 `SKILL.md` 即可使用：
+本專案 `skills/` 目錄存放共用 Skill，讀 `SKILL.md` 即可使用：
 
 | Skill | 路徑 | 用途 |
 |-------|------|------|
-| 語音轉字幕 | `skills/audio-to-srt/SKILL.md` | 音訊/影片 → SRT |
+| 智能剪口播 | `skills/smart-cut/SKILL.md` | auto-editor 去靜音 |
+| 語音轉字幕 | `skills/audio-to-srt/SKILL.md` | 音訊 → SRT（先剪片再轉字幕，時間碼才對齊） |
 | 封面圖生成 | `skills/cover-image/SKILL.md` | gpt-image-2 生圖 |
+
+## 標準工作流
+1. `raw/<影片代號>/原始.mp4` 進來
+2. 在 `working/<影片代號>/` 開工作空間
+3. 跑 `smart-cut` → `<影片代號>.cut.mp4`
+4. ffmpeg 抽音訊 → 跑 `audio-to-srt` → `.srt` + `.txt`
+5. 讀字幕生 10 個標題 → `working/<影片代號>/titles.md`，**停下等使用者挑**
+6. 使用者挑完 → 把標題清洗成合法資料夾名（去除 `？！：／＼?!:/\\<>|"*`）→ 建 `output/<標題>/`
+7. 平行：`cover-image` 生封面 + AI 寫 metadata.md（描述 / 社群 / SEO）
+8. 把 .cut.mp4、.srt、.txt、封面、metadata 全搬進 `output/<標題>/`，影片改名為 `<標題>.mp4`
+9. 更新 `HANDOFF.md`
 
 ## 資料夾結構
 ```
