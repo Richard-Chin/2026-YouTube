@@ -29,7 +29,15 @@
 |-------|------|------|
 | 智能剪口播 | `skills/smart-cut/SKILL.md` | auto-editor 去靜音 |
 | 語音轉字幕 | `skills/audio-to-srt/SKILL.md` | 音訊 → SRT（先剪片再轉字幕，時間碼才對齊） |
-| 封面圖生成 | `skills/cover-image/SKILL.md` | gpt-image-2 生圖（**必帶 `--edit assets/persona/三師爸人物形象照.png`**，且 prompt 須依 `assets/style/cover-style.md` 風格指南撰寫） |
+| 封面圖生成 | （見下方備註）| **使用你內建的 image 2 生圖工具**，不要呼叫 `skills/cover-image/draw.py`（那是給 Claude Code 用的）|
+
+### 封面生成（Codex 專用方式）
+你內建 image 2 生圖功能，**直接用內建工具產封面**，不需要 OpenAI API Key、不要跑 draw.py。
+但風格規範與人物基準照仍須遵守：
+- 把 `assets/persona/三師爸人物形象照.png` 當作人物基準傳給內建工具（如果內建工具支援 reference image）
+- prompt 依 `assets/style/cover-style.md` 風格指南撰寫
+- 主色依影片主角決定（Claude=橘 / Codex=藍 / 兩者並用=橘+藍）
+- 輸出存到 `output/<標題>/cover.png`
 
 ## 標準工作流
 1. `raw/<影片代號>/原始.mp4` 進來
@@ -43,8 +51,8 @@
      a. `Read assets/style/reference-thumbnails.png`（看頻道既有封面）
      b. `Read assets/style/cover-style.md`（讀完整風格指南）
      c. 依影片主角決定主色：Claude=橘 / Codex=藍 / 兩者並用=橘+藍
-     d. 撰寫 prompt → 呼叫 `cover-image` Skill（**必帶 `--edit assets/persona/三師爸人物形象照.png`**）
-   - AI 寫 metadata.md（描述 / 社群 / SEO）
+     d. 撰寫 prompt → **用你內建的 image 2 生圖工具**產封面（人物基準照當 reference image），存到 `output/<標題>/cover.png`
+   - AI 寫 metadata.md（描述 / 社群 / SEO，**SEO 區塊必含「YouTube 標籤欄位（直接複製）」逗號分隔版**）
 8. 把 .cut.mp4、.srt、.txt、封面、metadata 全搬進 `output/<標題>/`，影片改名為 `<標題>.mp4`
 9. 更新 `HANDOFF.md`
 

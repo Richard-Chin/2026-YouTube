@@ -40,7 +40,9 @@
 2. 建立 API Key
 3. 存到 `~/.groq_api_key`（純文字，整檔就是 key 字串）
 
-### OpenAI（給 cover-image 用，**必填**）
+### OpenAI（給 cover-image 用，**只在 Claude Code 才需要**）
+> ⚠️ **如果你只用 Codex 不用 Claude Code → 跳過這段、不需 OpenAI API Key**。Codex 內建 image 2 生圖功能，會直接用內建工具產封面，不會呼叫 `skills/cover-image/draw.py`。
+
 1. 到 [platform.openai.com](https://platform.openai.com) 註冊
 2. **要做 Individual 驗證**才能用 gpt-image-2（在 Settings → Organization → General）
 3. 建立 API Key
@@ -51,6 +53,15 @@
 5. 帳戶儲值（gpt-image-2 一張 low quality 約 NT$0.3）
 
 > 不想另存環境檔的話，也可以直接 export 到 shell：`export OPENAI_API_KEY=sk-...`
+
+### 兩個 AI Agent 的封面生成差異
+
+| AI Agent | 封面生成方式 | 是否需要 OPENAI_API_KEY |
+|---------|-------------|------------------------|
+| **Claude Code** | 呼叫 `skills/cover-image/draw.py`（OpenAI Python SDK）| ✅ 需要 |
+| **OpenAI Codex** | 用 Codex 內建的 image 2 生圖工具 | ❌ 不需要 |
+
+兩邊都遵守同一份 `assets/style/cover-style.md` 規範與 `assets/persona/` 人物基準照，所以產出風格一致。
 
 ---
 
