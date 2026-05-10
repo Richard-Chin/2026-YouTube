@@ -69,7 +69,10 @@ prompt 撰寫要點：
 | 語音轉字幕 | `skills/audio-to-srt/SKILL.md` | 剪好的影片/音訊 → SRT |
 | 封面圖生成 | `skills/cover-image/SKILL.md` | 需要 YouTube 封面、社群圖 |
 
-> Claude Code 端：`audio-to-srt` 與 `cover-image` 仍以全域 `~/.claude/skills/` 為主，本資料夾的副本是給 Codex 讀的「離線版」。`smart-cut` 是專案原生 Skill。若全域 Skill 有更新，請同步更新本資料夾的副本。
+> Claude Code 端：`audio-to-srt` 與 `cover-image` 仍以全域 `~/.claude/skills/` 為主，本資料夾的副本是給 Codex 讀的「離線版」。`smart-cut` 是專案原生 Skill。
+>
+> **同步全域 Skill → 專案副本**：跑 `./scripts/sync-skills.ps1`（dry-run）或加 `-Apply` 真的同步。
+> **重要政策**：`skills/*/SKILL.md` 會被 sync 覆蓋。專案特殊規範（例如人物基準）只能寫在 `CLAUDE.md` / `AGENTS.md`，不要塞進 SKILL.md。
 
 ## 標準工作流（每支影片）
 

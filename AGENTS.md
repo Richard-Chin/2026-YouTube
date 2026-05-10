@@ -20,7 +20,8 @@
 最終交付到 `output/<YouTube 標題>/`：剪好的影片、SRT、txt、封面、metadata.md。
 
 ## 你可以使用的 Skills
-本專案 `skills/` 目錄存放共用 Skill，讀 `SKILL.md` 即可使用：
+本專案 `skills/` 目錄存放共用 Skill，讀 `SKILL.md` 即可使用。
+這些 Skill 由 `scripts/sync-skills.ps1` 從全域同步而來；專案特殊規範（如封面人物基準）只寫在本檔與 CLAUDE.md，不會在 SKILL.md 裡。
 
 | Skill | 路徑 | 用途 |
 |-------|------|------|
