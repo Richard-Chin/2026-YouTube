@@ -36,7 +36,13 @@
 4. ffmpeg 抽音訊 → 跑 `audio-to-srt` → `.srt` + `.txt`
 5. 讀字幕生 10 個標題 → `working/<影片代號>/titles.md`，**停下等使用者挑**
 6. 使用者挑完 → 把標題清洗成合法資料夾名（去除 `？！：／＼?!:/\\<>|"*`）→ 建 `output/<標題>/`
-7. 平行：`cover-image` 生封面（**必帶 `--edit assets/persona/三師爸人物形象照.png`**，prompt 依 `assets/style/cover-style.md` 風格指南撰寫） + AI 寫 metadata.md（描述 / 社群 / SEO）
+7. 平行：
+   - **封面 SOP**（缺一不可）：
+     a. `Read assets/style/reference-thumbnails.png`（看頻道既有封面）
+     b. `Read assets/style/cover-style.md`（讀完整風格指南）
+     c. 依影片主角決定主色：Claude=橘 / Codex=藍 / 兩者並用=橘+藍
+     d. 撰寫 prompt → 呼叫 `cover-image` Skill（**必帶 `--edit assets/persona/三師爸人物形象照.png`**）
+   - AI 寫 metadata.md（描述 / 社群 / SEO）
 8. 把 .cut.mp4、.srt、.txt、封面、metadata 全搬進 `output/<標題>/`，影片改名為 `<標題>.mp4`
 9. 更新 `HANDOFF.md`
 

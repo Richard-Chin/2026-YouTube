@@ -179,4 +179,17 @@ quality 一律 **low**（夠用、便宜、快），除非要實體印刷才升 
 ---
 
 ## 風格參考圖
-若 `assets/style/reference-thumbnails.png` 存在，產封面時應一併讀取作為視覺參考。
+
+`assets/style/reference-thumbnails.png` 是頻道 12 張既有封面的截圖。
+
+**使用方式（重要）：**
+1. **生封面前**，AI agent（Claude / Codex）先用 Read 工具讀取這張參考圖，內化視覺風格。
+2. 根據參考圖觀察到的元素細節（光線分布、人物 pose、字體粗細、icon 風格等）撰寫 prompt。
+3. 呼叫 `cover-image` Skill 時 `--edit` 只能傳人物基準照（gpt-image-2 一次只接受一張輸入圖），但因為 prompt 寫得貼近風格，產出仍會穩定符合頻道調性。
+
+**SOP：**
+```
+Read assets/style/reference-thumbnails.png  →  Read assets/style/cover-style.md
+   →  根據兩者撰寫 prompt
+   →  呼叫 cover-image Skill（--edit 人物基準照）
+```

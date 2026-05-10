@@ -58,12 +58,11 @@
 gpt-image-2 在 edit 模式下會延續人物的臉、髮型、體型、穿著（黑色連帽外套、眼鏡）。
 
 ### 2. 視覺風格指南
-**所有封面 prompt 都必須依 `assets/style/cover-style.md` 撰寫**，維持頻道識別：
-- 深海軍藍背景 + 電子青光線
-- 亮黃 / 白色超粗黑體中文標題（粗黑描邊）
-- 人物固定在畫面右側，左側放主題視覺
-- 集數標籤（如「Claude 基本功 EP##」）與副標位置固定
-- 完整色票、構圖網格、prompt 範本見 cover-style.md
+**生封面前的 SOP（缺一不可）：**
+1. `Read assets/style/reference-thumbnails.png` — 用 Read 工具看頻道既有 12 張封面參考圖
+2. `Read assets/style/cover-style.md` — 讀完整風格指南（色票、構圖、主題配色規則、prompt 範本）
+3. 依影片主角決定主色：**Claude=橘 / Codex=藍 / 兩者並用=橘+藍**
+4. 撰寫 prompt 後再呼叫 `cover-image` Skill
 
 > 規則衝突時的優先序：人物基準照 > 風格指南 > 個別影片 prompt 變化
 

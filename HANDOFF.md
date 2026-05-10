@@ -28,10 +28,17 @@
 - 封面 png 是 1536x1024（3:2），YouTube 建議 1280x720（16:9）— 視覺上沒太大差，需要的話可以後處理裁切
 - smart-cut 預設 threshold 0.04 對這位口播者太鬆，這支影片用 0.06 才剛好。下一支可以先試 0.05 找平衡。
 
-## 封面生成規範（2026-05-10 新增）
+## 封面生成規範（2026-05-10 新增、傍晚 v3 補強）
 **所有封面必須以 `assets/persona/三師爸人物形象照.png` 作為人物基準。**
 呼叫 `cover-image` Skill 時帶 `--edit assets/persona/三師爸人物形象照.png`。
-細節見 `CLAUDE.md` §「封面人物基準照」。
+
+**生封面前 SOP**：
+1. `Read assets/style/reference-thumbnails.png`（看頻道既有 12 張封面）
+2. `Read assets/style/cover-style.md`（讀風格指南）
+3. 依影片主角決定主色：**Claude=橘 / Codex=藍 / 兩者並用=橘+藍**
+4. 撰寫 prompt → 呼叫 cover-image Skill
+
+細節見 `CLAUDE.md` §「封面規範」與 `assets/style/cover-style.md`。
 
 ## 環境前置確認
 | 項目 | 確認方式 | 備註 |
