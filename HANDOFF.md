@@ -50,6 +50,17 @@
   - 總控 Skill 已拆分：Codex 用 `skills/codex-youtube-video-workflow/`，Claude Code 用 `skills/claude-youtube-video-workflow/`；備份在 `skills-backup/`
   - 測試產物在 `working/codex-flow-test/`（被 `.gitignore` 忽略）
 
+## 2026-05-11 短片三版實測（livestream-skills-pack）
+- 來源直播：`raw/使用 AI Agent 來自動剪輯教學影片_Skills 技能懶人包福利大放送_.mp4`（3.3GB / 1h41m）
+- 走「最短路徑」：跳過 smart-cut、跳過逐段清字（直播太長、短片用不到）
+- ffmpeg 抽 16kHz mono 32kbps 音訊 24MB → 剛好擠進 Groq 25MB 上限
+- Groq 轉錄：1937 段 / 17556 字
+- 三個短片版本全成品（每版 5 檔齊全：mp4/srt/txt/cover.png/metadata.md）：
+  - `output/沒有人比這個更簡單 AI Agent 自動剪片 [Claude] (Short)/`（A 痛點型，1:50）
+  - `output/別再寫剪片程式 AI Skill 一鍵搞定 [Claude] (Short)/`（B 反直覺型，1:40）
+  - `output/3 個秘訣 AI Agent 自動剪好教學影片 [Claude] (Short)/`（C 教學型，1:49）
+- 封面均 Claude 橘色主題、SHORT 角標、人物樣貌延續基準照
+- 中途事件：人物基準照因 git 歷史清理被連帶清掉本機，使用者從 `C:/2025三師爸/viewsonic專業形像照/` 重新放回；該檔已 .gitignore，本機需保留
 
 ## 已知議題 / 待解問題
 - 封面 png 是 1536x1024（3:2），YouTube 建議 1280x720（16:9）— 視覺上沒太大差，需要的話可以後處理裁切
@@ -57,6 +68,7 @@
 - `auto-editor.exe` 安裝在 `C:\Users\mathr\AppData\Roaming\Python\Python314\Scripts`，該路徑不在 PATH；但 `smart_cut.py` 會走 `python -m auto_editor`，所以不影響 Codex 執行。
 - `resegment.py` 不會自動建立輸出資料夾；新影片流程要先建立 `_subtitles/`，否則會 `FileNotFoundError`。
 - PowerShell 操作含空白或 `[Claude]` / `[Codex]` 的路徑時要加引號；含中括號路徑建議用 `-LiteralPath`。
+- `clip_cut.py` 會把 `--segments` 自動依時間排序（避免重疊偵測），所以**無法做倒敘剪輯**。版本 B 原想先放結論再回開場，被排序成順敘，效果略弱於設計。下次要做倒敘需加 `--keep-order` 選項並改寫重疊驗證。
 
 ## 封面生成規範（2026-05-10 新增、傍晚 v3 補強）
 **所有封面必須以 `assets/persona/三師爸人物形象照.png` 作為人物基準。**
