@@ -136,6 +136,13 @@ description: Claude Code 專用的 2026Youtube 總控工作流 Skill。當使用
 - 封面 prompt 矛盾（例如同時說人物穿藍色但基準照是黑色外套）→ gpt-image-2 會妥協；prompt 中只描述位置與場景，不要重新描述五官/穿著屬性。
 - **每次封面都要重新讀基準照**，不能拿前一張封面當輸入；模型會放大誤差，越生越不像。
 
+## 延伸：短片模式
+長片跑完後，使用者可能會說「再剪一個 short」。改用 `skills/short-video-workflow/SKILL.md` 接手：
+- 來源：`working/<video-id>/<video-id>.cut.mp4` + `.srt`（已是本流程的產物）
+- 規格：16:9、≤120s、3 候選版本、輸出 `output/<短片標題> [Claude] (Short)/`
+- 主色仍是 Claude 橘
+- 封面、metadata 沿用同一份風格指南與人物基準照
+
 ## 範例：本專案第一支影片的成果參數
 讓你知道實測 OK 的參數長相：
 - 影片：`你還在手動填課程計畫嗎 AI Agent 教師工作流實演`

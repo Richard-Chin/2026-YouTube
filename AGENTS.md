@@ -31,6 +31,7 @@
 | 智能剪口播 | `skills/smart-cut/SKILL.md` | auto-editor 去靜音 |
 | 語音轉字幕 | `skills/audio-to-srt/SKILL.md` | 音訊 → SRT（先剪片再轉字幕，時間碼才對齊） |
 | 封面圖生成 | （見下方備註）| **使用你內建的 image 2 生圖工具**，不要呼叫 `skills/cover-image/draw.py`（那是給 Claude Code 用的）|
+| 短片亮點剪輯 | `skills/short-video-workflow/SKILL.md` | 從長片字幕抓亮點，產 ≤2 分鐘短片；輸出資料夾後綴 `[Codex] (Short)`；封面同樣用內建 Image2 |
 
 Codex 總控 Skill 另有備份副本：`skills-backup/codex-youtube-video-workflow/`。Claude Code 的總控 Skill 另在 `skills/claude-youtube-video-workflow/`，不要混用。
 

@@ -80,6 +80,13 @@ description: Codex 專用的 2026Youtube 總控工作流 Skill。當使用者要
 9. **更新交班**
    - 更新 `HANDOFF.md`：完成項目、輸出位置、封面狀態、待審事項、下一步。
 
+## 延伸：短片模式
+長片跑完後，使用者可能會說「再剪一個 short」。改用 `skills/short-video-workflow/SKILL.md` 接手：
+- 來源：`working/<video-id>/<video-id>.cut.mp4` + `.srt`
+- 規格：16:9、≤120s、3 候選版本、輸出 `output/<短片標題> [Codex] (Short)/`
+- 主色仍是 Codex 亮藍 / 電子青
+- 封面用 Codex 內建 Image2，不呼叫 draw.py
+
 ## 踩坑
 
 - Codex 使用的 Python 可能不同於 Claude Code；缺 `auto-editor` 或其他套件時，安裝到目前 `python`。

@@ -13,6 +13,10 @@
    - 封面圖（OpenAI gpt-image-2，自動套用你的人物與頻道風格）
    - YouTube 描述、社群貼文、SEO 關鍵字
 5. **打包**：剪好的影片 + 字幕 + 純文字 + 封面 + metadata，全部放在 `output/<標題> [Claude]/` 或 `output/<標題> [Codex]/`（依執行的 AI Agent 標記，方便 A/B 比較）
+6. **（可選）短片模式**：跑完長片後可加碼產 ≤2 分鐘短片（YouTube Shorts / IG Reels 通用）— `skills/short-video-workflow/`
+   - AI 讀字幕找亮點、產 3 個候選版本（痛點型 / 好奇型 / 承諾型）等使用者挑
+   - 也支援使用者直接給時間碼或描述
+   - 輸出 `output/<短片標題> [Claude] (Short)/` 或 `[Codex] (Short)/`，含同樣 5 個檔案
 
 整個流程由 **Claude Code** 與 **OpenAI Codex** 透過 `HANDOFF.md` 接力完成。
 若要讓 AI 一次依序跑完整流程，依使用的 Agent 選擇總控 Skill：
