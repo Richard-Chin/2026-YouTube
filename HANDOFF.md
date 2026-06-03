@@ -8,24 +8,23 @@
 ## 目前狀態（最新）
 - **更新時間**：2026-06-04
 - **最後操作者**：Antigravity (OpenAI Codex)
-- **進度**：第四集長片精華剪輯與字幕清理完成，且第五集短片精華也已產出！
+- **進度**：第四集長片與短片字幕術語修正完成，短片字幕已重新燒錄。
+  - **術語修正**：
+    - `"一夜式漫畫" / "一夜市漫畫" / "一月四漫畫" / "一頁四漫畫"` -> `"一頁式漫畫"`
+    - `"四個漫畫"` -> `"四格漫畫"`
+    - `"report"` -> `"repo"` (case-insensitive)
+    - `"A群" / "AI群"` -> `"agents"`
   - **第四集長片**：`AntiGravity 基本功 EP04_全面升級你的Gems`
-    - 來源：`C:\Users\mathr\Downloads\AntiGravity 基本功 EP04_全面升級你的Gem.mp4`
-    - 剪口播：使用 `smart-cut` (threshold 0.05, margin 0.2s) 去除靜音，原長 50:18 → 39:03 (剪掉 22.4%)。
-    - 字幕處理：Groq Whisper 轉錄後，重新斷句 (resegment) 與套用詞彙。
-    - 術語修正：Gems, AntiGravity 2, Codex 等術語全部自動修正。
-    - 成果目錄：`output/AntiGravity 基本功 EP04_全面升級你的Gems [Codex]/`，包含長片 `.mp4`、`.srt`、`.txt`。
-  - **第五集短片**（Gems升級）：`Gems 做不到的事！AI 一鍵生成三頁互動語音漫畫電子書` (Short)
-    - 來源：`output/AntiGravity 基本功 EP04_全面升級你的Gems [Codex]/AntiGravity 基本功 EP04_全面升級你的Gems.mp4`
-    - 剪輯段落：`00:18:55.870-00:19:12.670, 00:19:21.890-00:19:39.220, 00:38:13.210-00:38:40.550, 00:38:40.550-00:38:59.790`
-    - 後製：結尾添加 3 秒「完整影片請看留言」亮藍色霓虹字卡，總時長 83.71 秒。
-    - 全部素材在：`output/Gems 做不到的事 AI 一鍵生成三頁互動語音漫畫電子書 [Codex] (Short)/`
-  - **封面與元數據**：短片已生成 16:9 藍色系 SHORT 專用封面與優化元數據。
-- **本次新補裝/腳本**：
-  - `skills/short-video-workflow/scripts/add_end_card.py` (利用 ffmpeg 後製 3 秒結尾字卡與音訊匹配)
+    - 字幕修改：已直接更新 `.srt` 與 `.txt` 檔，未重新燒錄影片。
+  - **第五集短片**：`Gems 做不到的事 AI 一鍵生成三頁互動語音漫畫電子書` (Short)
+    - 字幕修改：已更新 `.srt` 與 `.txt` 檔。
+    - 影片修改：已使用 `burn_subtitles.py` 重新將更新後的 `.srt` 字幕燒錄至 `Gems 做不到的事 AI 一鍵生成三頁互動語音漫畫電子書_字幕版.mp4`。
+- **成果目錄**：
+  - 長片：`output/AntiGravity 基本功 EP04_全面升級你的Gems [Codex]/`
+  - 短片：`output/Gems 做不到的事 AI 一鍵生成三頁互動語音漫畫電子書 [Codex] (Short)/`
 
 ## 下一步（給下一個 AI）
-- 剛剪好的第五集短影片（與先前第二、三、四集短片）待確認上架 YouTube Shorts 或社群平台。
+- 剛剪好的第五集短影片與先前第二、三、四集短片待確認上架 YouTube Shorts 或社群平台。
 - 檢查 `raw/` 內尚有：`用 AI Agent 來幫忙寫年度領域課程計畫.mp4` 與 `AI_agents的基本認識.mp4`，等使用者指示。
 
 ---
