@@ -8,24 +8,21 @@
 ## 目前狀態（最新）
 - **更新時間**：2026-06-04
 - **最後操作者**：Antigravity (OpenAI Codex)
-- **進度**：第四集長片與短片字幕術語修正完成，短片字幕已重新燒錄。
-  - **術語修正**：
-    - `"一夜式漫畫" / "一夜市漫畫" / "一月四漫畫" / "一頁四漫畫"` -> `"一頁式漫畫"`
-    - `"四個漫畫"` -> `"四格漫畫"`
-    - `"report"` -> `"repo"` (case-insensitive)
-    - `"A群" / "AI群"` -> `"agents"`
-  - **第四集長片**：`AntiGravity 基本功 EP04_全面升級你的Gems`
-    - 字幕修改：已直接更新 `.srt` 與 `.txt` 檔，未重新燒錄影片。
-  - **第五集短片**：`Gems 做不到的事 AI 一鍵生成三頁互動語音漫畫電子書` (Short)
-    - 字幕修改：已更新 `.srt` 與 `.txt` 檔。
-    - 影片修改：已使用 `burn_subtitles.py` 重新將更新後的 `.srt` 字幕燒錄至 `Gems 做不到的事 AI 一鍵生成三頁互動語音漫畫電子書_字幕版.mp4`。
-- **成果目錄**：
-  - 長片：`output/AntiGravity 基本功 EP04_全面升級你的Gems [Codex]/`
-  - 短片：`output/Gems 做不到的事 AI 一鍵生成三頁互動語音漫畫電子書 [Codex] (Short)/`
+- **進度**：第五集長片《AntiGravity 基本功 EP05_教學應用程式的 5 個階段》精華剪輯與字幕清理完成！
+  - **第五集長片**：`AntiGravity 基本功 EP05_教學應用程式的 5 個階段`
+    - 來源：`C:\Users\mathr\Downloads\AntiGravity 基本功 EP05_教學應用程式的 5 個階段.mp4`
+    - 剪口播：使用 `smart-cut` (threshold 0.05, margin 0.2s) 去除靜音，原長 52:49 → 41:28 (剪掉 21.5%)。
+    - 字幕處理：Groq Whisper 轉錄後，重新斷句 (resegment) 與套用詞彙。
+    - 術語修正：依據使用者確認，完成以下替換：
+      - `Claude ASP` ➡️ `clasp` (Google Apps Script CLI 工具)
+      - `Antigravity` ➡️ `AntiGravity`
+    - 成果目錄：`output/AntiGravity 基本功 EP05_教學應用程式的 5 個階段 [Codex]/`，包含影片 `.mp4`、字幕 `.srt`、與純文字稿 `.txt`。
+- **之前進度**：
+  - 第四集長片與短片字幕術語修正完成，第二、三、四集短片精華連續剪輯完成（詳見下方交班歷史）。
 
 ## 下一步（給下一個 AI）
-- 剛剪好的第五集短影片與先前第二、三、四集短片待確認上架 YouTube Shorts 或社群平台。
-- 檢查 `raw/` 內尚有：`用 AI Agent 來幫忙寫年度領域課程計畫.mp4` 與 `AI_agents的基本認識.mp4`，等使用者指示。
+- 目前 EP05 剪片、字幕與純文字稿已全部交付，等待使用者下一步命令（例如生封面、文案或進行短片提取）。
+- `raw/` 下尚有 `用 AI Agent 來幫忙寫年度領域課程計畫.mp4` 與 `AI_agents的基本認識.mp4` 可依需要處理。
 
 ---
 
