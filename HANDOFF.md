@@ -8,17 +8,29 @@
 ## 目前狀態（最新）
 - **更新時間**：2026-06-06
 - **最後操作者**：Antigravity (OpenAI Codex)
-- **進度**：第六集長片《Antigravity 基本功 EP06_全面代理你的 Google Classroom》精華剪輯與字幕清理完成！
-  - **第六集長片**：`Antigravity 基本功 EP06_全面代理你的 Google Classroom`
-    - 來源：`G:\我的雲端硬碟\2026Youtube\Antigravity 基本功 EP06_全面代理你的 Google Classroom.mp4`
-    - 剪口播：使用 `smart-cut` (threshold 0.05, margin 0.2s) 去除靜音，原長 58:08 → 31:58 (剪掉 45.0%)。
-    - 字幕處理：Groq Whisper 轉錄後，重新斷句 (resegment) 與套用詞彙。
-    - 術語修正：依據使用者確認，完成以下替換：
-      - `Google Claude` / `Claude Console` / `Claude API` ➡️ `Google Cloud` / `Google Cloud Console` / `Google Cloud API`
-      - `AGE` / `engine` / `Edging` ➡️ `Agent`
-      - `A群` ➡️ `Agents`
-      - `classroom ag` ➡️ `Classroom Agent`
-      - `Antigravity` ➡️ `AntiGravity` (統一大小寫，但保留最終資料夾名稱為 `Antigravity` 以與原始檔名一致)
+- **進度**：EP06 短影片精華剪輯與製作完成。
+  - **第六集長片**：`Antigravity 基本功 EP06_全面代理你的 Google Classroom` (無重新燒錄，直接更新 srt/txt)
+  - **EP06 短影片**：`一句話讓 AI 幫你發 Google Classroom 作業！Classroom 代理實測！` (Short)
+    - 來源：`working/antigravity-ep06/antigravity-ep06.cut.mp4`
+    - 剪輯段落：`00:17:06.758-00:18:25.578` (78.83s, Option A 實機作業派發)
+    - 輸出目錄：`output/一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測 [Codex] (Short)/`
+    - 包含檔案：
+      - `一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測.mp4` (乾淨版)
+      - `一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測_字幕版.mp4` (燒錄字幕版)
+      - `一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測.srt`
+      - `一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測.txt`
+      - `cover.png` (Codex 藍色系封面，以 `三師爸人物形象照.png` 為人物基準)
+      - `metadata.md` (包含短影片描述、社群貼文、SEO 與標籤)
+- **術語修正歷史 (EP04)**：
+  - `"一夜式漫畫" / "一夜市漫畫" / "一月四漫畫" / "一頁四漫畫"` -> `"一頁式漫畫"`
+  - `"四個漫畫"` -> `"四格漫畫"`
+  - `"report"` -> `"repo"` (case-insensitive)
+  - `"A群" / "AI群"` -> `"agents"`
+    - `Google Claude` / `Claude Console` / `Claude API` ➡️ `Google Cloud` / `Google Cloud Console` / `Google Cloud API`
+    - `AGE` / `engine` / `Edging` ➡️ `Agent`
+    - `A群` ➡️ `Agents`
+    - `classroom ag` ➡️ `Classroom Agent`
+    - `Antigravity` ➡️ `AntiGravity` (統一大小寫，但保留最終資料夾名稱為 `Antigravity` 以與原始檔名一致)
     - 成果目錄：`output/Antigravity 基本功 EP06_全面代理你的 Google Classroom [Codex]/`，包含影片 `.mp4`、字幕 `.srt`、與純文字稿 `.txt`。
 - **之前進度**：
   - 第五集長片與短片剪輯製作完成（詳見下方交班歷史）。
