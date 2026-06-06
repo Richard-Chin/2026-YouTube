@@ -6,31 +6,25 @@
 ---
 
 ## 目前狀態（最新）
-- **更新時間**：2026-06-04
+- **更新時間**：2026-06-06
 - **最後操作者**：Antigravity (OpenAI Codex)
-- **進度**：EP05 短影片精華剪輯與製作完成。
-  - **第五集長片**：`AntiGravity 基本功 EP05_教學應用程式的 5 個階段` (無重新燒錄，直接更新 srt/txt)
-  - **EP05 短影片**：`你的 AI 教學網頁在哪個等級？5 個程式開發階段大盤點！` (Short)
-    - 來源：`working/antigravity-ep05/antigravity-ep05.cut.mp4`
-    - 剪輯段落：`00:11:00.060-00:13:01.400` (121.34s, Option A 5個等級大盤點)
-    - 輸出目錄：`output/你的 AI 教學網頁在哪個等級 5 個程式開發階段大盤點 [Codex] (Short)/`
-    - 包含檔案：
-      - `你的 AI 教學網頁在哪個等級 5 個程式開發階段大盤點.mp4` (乾淨版)
-      - `你的 AI 教學網頁在哪個等級 5 個程式開發階段大盤點_字幕版.mp4` (燒錄字幕版)
-      - `你的 AI 教學網頁在哪個等級 5 個程式開發階段大盤點.srt`
-      - `你的 AI 教學網頁在哪個等級 5 個程式開發階段大盤點.txt`
-      - `cover.png` (Codex 藍色系封面，以 `三師爸人物形象照.png` 為人物基準)
-      - `metadata.md` (包含短影片描述、社群貼文、SEO 與標籤)
-- **術語修正歷史 (EP04)**：
-  - `"一夜式漫畫" / "一夜市漫畫" / "一月四漫畫" / "一頁四漫畫"` -> `"一頁式漫畫"`
-  - `"四個漫畫"` -> `"四格漫畫"`
-  - `"report"` -> `"repo"` (case-insensitive)
-  - `"A群" / "AI群"` -> `"agents"`。
+- **進度**：第六集長片《Antigravity 基本功 EP06_全面代理你的 Google Classroom》精華剪輯與字幕清理完成！
+  - **第六集長片**：`Antigravity 基本功 EP06_全面代理你的 Google Classroom`
+    - 來源：`G:\我的雲端硬碟\2026Youtube\Antigravity 基本功 EP06_全面代理你的 Google Classroom.mp4`
+    - 剪口播：使用 `smart-cut` (threshold 0.05, margin 0.2s) 去除靜音，原長 58:08 → 31:58 (剪掉 45.0%)。
+    - 字幕處理：Groq Whisper 轉錄後，重新斷句 (resegment) 與套用詞彙。
+    - 術語修正：依據使用者確認，完成以下替換：
+      - `Google Claude` / `Claude Console` / `Claude API` ➡️ `Google Cloud` / `Google Cloud Console` / `Google Cloud API`
+      - `AGE` / `engine` / `Edging` ➡️ `Agent`
+      - `A群` ➡️ `Agents`
+      - `classroom ag` ➡️ `Classroom Agent`
+      - `Antigravity` ➡️ `AntiGravity` (統一大小寫，但保留最終資料夾名稱為 `Antigravity` 以與原始檔名一致)
+    - 成果目錄：`output/Antigravity 基本功 EP06_全面代理你的 Google Classroom [Codex]/`，包含影片 `.mp4`、字幕 `.srt`、與純文字稿 `.txt`。
 - **之前進度**：
-  - 第四集長片與短片字幕術語修正完成，第二、三、四集短片精華連續剪輯完成（詳見下方交班歷史）。
+  - 第五集長片與短片剪輯製作完成（詳見下方交班歷史）。
 
 ## 下一步（給下一個 AI）
-- 目前 EP05 剪片、字幕與純文字稿已全部交付，等待使用者下一步命令（例如生封面、文案或進行短片提取）。
+- 目前 EP06 剪片、字幕與純文字稿已全部交付，等待使用者下一步命令（例如生封面、文案或進行短片提取）。
 - `raw/` 下尚有 `用 AI Agent 來幫忙寫年度領域課程計畫.mp4` 與 `AI_agents的基本認識.mp4` 可依需要處理。
 
 ---
