@@ -6,17 +6,18 @@
 ---
 
 ## 目前狀態（最新）
-- **更新時間**：2026-06-06
+- **更新時間**：2026-06-07
 - **最後操作者**：Antigravity (OpenAI Codex)
 - **進度**：EP06 短影片精華剪輯與製作完成。
   - **第六集長片**：`Antigravity 基本功 EP06_全面代理你的 Google Classroom` (無重新燒錄，直接更新 srt/txt)
-  - **EP06 短影片**：`一句話讓 AI 幫你發 Google Classroom 作業！Classroom 代理實測！` (Short)
+  - **EP06 短影片**：`一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測` (Short)
     - 來源：`working/antigravity-ep06/antigravity-ep06.cut.mp4`
-    - 剪輯段落：`00:19:39.658-00:20:58.898` (79.24s, Option A 實機作業派發)
+    - 剪輯段落：`00:21:02.898-00:21:43.098` 與 `00:22:47.098-00:23:35.838` (共 88.94s，跳過等待時間與口誤)
+    - 結尾字卡：末端新增 3 秒「詳細影片請看留言」字卡（總長度 91.90s）
     - 輸出目錄：`output/一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測 [Codex] (Short)/`
     - 包含檔案：
-      - `一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測.mp4` (乾淨版)
-      - `一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測_字幕版.mp4` (燒錄字幕版)
+      - `一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測.mp4` (乾淨版，91.90s，含 3 秒字卡)
+      - `一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測_字幕版.mp4` (燒錄字幕版，91.90s，含 3 秒字卡，字幕已重新燒錄對齊)
       - `一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測.srt`
       - `一句話讓 AI 幫你發 Google Classroom 作業 Classroom 代理實測.txt`
       - `cover.png` (Codex 藍色系封面，以 `三師爸人物形象照.png` 為人物基準)

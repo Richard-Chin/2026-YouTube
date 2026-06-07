@@ -67,7 +67,7 @@ def main():
     # 設定字卡背景顏色為深海軍藍 `#0A192F`，文字為白色，加亮藍色陰影/霓虹邊緣
     # 在 Windows 環境中使用微軟正黑體 msjh.ttc
     font_path = "C\:\\\\Windows\\\\Fonts\\\\msjh.ttc"
-    text = "完整影片請看留言"
+    text = "詳細影片請看留言"
     
     # ffmpeg drawtext filter 字幕繪製
     drawtext_filter = (
