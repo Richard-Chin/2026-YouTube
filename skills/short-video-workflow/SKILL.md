@@ -124,18 +124,44 @@ python skills/short-video-workflow/scripts/clip_cut.py \
 
 跑完後**確認時長 ≤ 120 秒**（ffprobe），超過就回 step 4 重組。
 
-### Step 6：給短片定 3 個標題，等使用者挑
+### Step 6：新增結尾字卡與燒錄字幕
+
+1. **添加結尾字卡**：
+在影片的最尾端放置一個 3 秒的「詳細影片請看留言」字卡。
+呼叫包裝腳本：
+```bash
+python skills/short-video-workflow/scripts/add_end_card.py \
+  --input-mp4 "working/<video-id>/short-tmp/short.mp4" \
+  --output-mp4 "working/<video-id>/short-tmp/short_with_card.mp4"
+```
+這會生成 `short-tmp/short_with_card.mp4`（總長度增加 3 秒，顯示深海軍藍 `#0A192F` 背景、霓虹亮藍字白色描邊的字卡，包含無聲音軌）。
+
+2. **燒錄字幕**：
+使用 `burn_subtitles.py` 將 `.srt` 字幕燒錄到影片中：
+```bash
+python skills/short-video-workflow/scripts/burn_subtitles.py \
+  "working/<video-id>/short-tmp/short_with_card.mp4" \
+  "working/<video-id>/short-tmp/short.srt" \
+  "working/<video-id>/short-tmp/short_subtitled.mp4"
+```
+這會產出燒錄好字幕並帶有結尾字卡的影片 `short-tmp/short_subtitled.mp4`。
+
+### Step 7：給短片定 3 個標題，等使用者挑
 
 短片標題不一定等於長片標題；通常更聳動、更短。
-依 step 5 的內容生 3 個候選寫到 `working/<video-id>/short-titles.md`，停下等使用者挑（不要 10 個，短片不需要那麼多）。
+依前述內容生 3 個候選寫到 `working/<video-id>/short-titles.md`，停下等使用者挑（不要 10 個，短片不需要那麼多）。
 
-### Step 7：使用者選定短片標題後 — 建資料夾
+### Step 8：使用者選定短片標題後 — 建資料夾
 
 - 標題清洗（去除 `？！：／＼?!:/\\<>|"*`）
 - 建 `output/<短片標題> [Claude] (Short)/`（Claude）或 `output/<短片標題> [Codex] (Short)/`（Codex）
-- 把 short.mp4 / short.srt / short.txt 搬進去並改名為 `<短片標題>.mp4` 等
+- 搬移並重新命名檔案到輸出資料夾：
+  - 把 `short_with_card.mp4` 改名為 `<短片標題>.mp4`（乾淨版）
+  - 把 `short_subtitled.mp4` 改名為 `<短片標題>_字幕版.mp4`（燒錄字幕版）
+  - 把 `short.srt` 改名為 `<短片標題>.srt`
+  - 把 `short.txt` 改名為 `<短片標題>.txt`
 
-### Step 8：產封面（沿用長片封面 SOP）
+### Step 9：產封面（沿用長片封面 SOP）
 
 **生封面前 SOP（缺一不可）**：
 1. `Read assets/style/reference-thumbnails.png`
@@ -152,7 +178,7 @@ python skills/short-video-workflow/scripts/clip_cut.py \
 - **Claude Code**：`python skills/cover-image/draw.py "<prompt>" --edit "assets/persona/三師爸人物形象照.png" --size 1536x1024 --quality low --name cover --outdir "output/<標題> [Claude] (Short)/"`
 - **Codex**：用內建 Image2，不呼叫 draw.py
 
-### Step 9：寫 metadata（短片版本）
+### Step 10：寫 metadata（短片版本）
 
 `metadata.md` 結構**與長片不同**（短片有自己的玩法）：
 
@@ -165,7 +191,7 @@ python skills/short-video-workflow/scripts/clip_cut.py \
    - **YouTube 標籤欄位（直接複製）**：半形逗號分隔，**最後加 `Shorts,短影片` 兩個必備標籤**
 5. **上架前 checklist**：標題 ≤ 40 字、封面、字幕、`#Shorts` 在標題或描述、發布時段建議
 
-### Step 10：自我檢查清單
+### Step 11：自我檢查清單
 
 跑完後逐項確認：
 - [ ] 資料夾名結尾有 ` [Claude] (Short)` 或 ` [Codex] (Short)` 後綴
@@ -176,7 +202,7 @@ python skills/short-video-workflow/scripts/clip_cut.py \
 - [ ] metadata.md 含 `#Shorts` 標籤
 - [ ] HANDOFF.md 已更新本支短片狀態
 
-### Step 11：更新 HANDOFF.md
+### Step 12：更新 HANDOFF.md
 
 紀錄：
 - 短片標題
@@ -211,7 +237,9 @@ python skills/short-video-workflow/scripts/clip_cut.py \
 skills/short-video-workflow/
 ├── SKILL.md
 └── scripts/
-    └── clip_cut.py        # ffmpeg 切片+組片+SRT 重編
+    ├── clip_cut.py        # ffmpeg 切片+組片+SRT 重編
+    ├── add_end_card.py    # 結尾添加 3 秒「詳細影片請看留言」字卡
+    └── burn_subtitles.py  # 將 srt 字幕燒錄進 mp4 影片
 ```
 
 ## 與其他 Skill 的關係
