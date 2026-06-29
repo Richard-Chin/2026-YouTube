@@ -6,9 +6,82 @@
 ---
 
 ## 目前狀態（最新）
-- **更新時間**：2026-06-15（深夜）
+- **更新時間**：2026-06-29
 - **最後操作者**：Claude Code（Opus 4.8）
-- **進度**：**AI Agent 基本功 EP01（用 Agent 學 Agent）長片＋短片全流程交付完成** ✅
+- **進度**：**AI Agent 基本功 EP03（Agent 的四隻手腳：讀檔/寫程式/上網/出成品）長片全流程交付完成** ✅
+  - 來源：使用者 Downloads `AI Agent 基本功 EP03...mp4`（原長 75:10 / 2.6GB；**CFR** 30/1，免轉檔）→ 歸檔 `raw/aiagent-ep03/`
+  - smart-cut（threshold 0.06、margin `0sec,0.1sec`，**輸出 C:\temp 再搬回**）→ 48:35（剪 35.4%）；亮度抽樣 ~200/255 無黑畫面
+  - 轉字幕：Groq 12615 字 → resegment 1215 段 → apply_vocab → STOP1 使用者確認 8 處 → 自寫大小寫敏感+跨段替換腳本套 115 段更正 → validate 通過（1215 段全吻合）→ 刪 4 段抖內 → 最終 1211 段 / 48:34
+  - **本集詞彙更正重點**（AI Agent 系列沿用）：
+    - Agent 家族：AiGeng/Aging/Edging/Edge/Agin/Agen/AGE/A群/AI局/AI群/AIA/AIG → **Agent / AI Agent**（**大小寫敏感**避免誤傷既有 Agent；Agen 用負向預看 `(?!t)`）
+    - **Chrome vs Claude**：段 360/370/376/377「Claude 線上程式應用商店 / Claude 瀏覽器」→ **Chrome**（該段在裝 Claude in Chrome 擴充，商店與瀏覽器是 Chrome）
+    - 工具/套件：Quizzer→Whisper、Tibeless/TypeList/Tabless→**Typeless**、MarkDone→**MarkItDown**、MetaPlanetLive→**Matplotlib**、PlayWrite→**Playwright**、BigPicco→**Big Pickle**、大煙菜→大醃菜
+    - 模型：Opus.8→**Opus 4.8**、GLM5.2→**GLM 5.2**；**GPT5.5 保留原文**（使用者拍板）
+    - 用語：複製入鏡→**複製路徑**、未給(檔案)→**餵給**；抖內/喊名段全刪（818/847/956/957）
+  - 長片標題使用者選 A3：「AI Agent 基本功 EP03：一句話讓 AI 幫你讀檔、寫程式、上網、做出成品」
+  - 長片交付：`output/AI Agent 基本功 EP03：一句話讓 AI 幫你讀檔、寫程式、上網、做出成品 [Claude]/`（5 檔齊全；封面橘色、AI 機器人四隻手臂＝檔案/終端機/網路/PowerPoint）
+  - **短片一次交付 3 支** ✅（使用者指定 B6/D9/D10 主題，由我自選段落組順敘三幕；clip_cut 會自動按時間排序，故 hook 都選在時間軸最前段）：
+    - B6「凌亂的下載資料夾，一句話讓 AI 幫你整理乾淨」（55.5s）：痛點資料夾沒空整理 → AI 一句話分類 → 整整齊齊＋待刪確認
+    - D9「一句話，AI 上網抓會考題自動做成 PowerPoint 考卷」（62.7s）：一句話下載會考題 → 每題截圖排 PowerPoint＋自動解答 → 一次做完幫老師省勞務
+    - D10「一份免費清單，讓 AI 變身老師的文書神器」（47.6s）：老師 Python 工具清單 → 丟 .md 給 Agent 全自動裝好 → GitHub repo 放說明欄
+    - 交付：`output/<各短片標題> [Claude] (Short)/`（各 6 檔齊全；封面橘色＋SHORT 標識）
+  - 注意：影片承諾「老師 Python 工具清單 GitHub repo」與「Big Pickle＝OpenCode EP05」連結放說明欄，上架務必補（D10 短片亦承諾工具清單 repo 連結）
+- **前一支（2026-06-28）**：**OpenCode EP05（免費 Big Pickle 與最強 GLM 5.2）長片＋2 支短片全流程交付完成** ✅
+  - 來源：`raw/opencode-ep05/opencode-ep05.mp4`（原長 56:22 / 1.83GB；**CFR** 30fps，免轉檔）
+  - smart-cut（threshold 0.06、margin `0sec,0.1sec`，**輸出 C:\temp 再搬回**）→ 33:25（剪 40.7%）
+  - 轉字幕：Groq 8046 字 → resegment 825 段 → apply_vocab → STOP1 使用者確認 6 處 → 套全部更正 → validate 通過（825 段全吻合，本集無整段刪除，喊名段以「保留工具名」方式編輯）
+  - **本集詞彙更正重點**（OpenCode 模型系列可沿用）：
+    - 免費模型：`Big Pico/BigPico/Pico/BigCode/BigPo` → **Big Pickle**；pickle 哏 `煙黃瓜/煙菜` → 醃黃瓜/醃菜（使用者拍板）
+    - `GLM5.2/ULM2/Gm5.2` → **GLM 5.2**；`OpenLauter` → OpenRouter；`OpenGo` → OpenCode Go 方案
+    - `Tragibility Code` → **ChatGPT Codex**（使用者確認）；`Deepstick/Disk V4` → DeepSeek V4；`seal大加/Gill` → SOIL Teaching Deck
+    - 抖內名刪除但**保留工具名**：`Claude Flare的Walker AI` 其實是 **Cloudflare 的 Workers AI**（已修正）、Z-Image Turbo 保留
+    - 補修：段 50「Claude B」→「Big Pickle」（剪短片時發現，長片字幕已同步）
+  - 長片標題使用者選 #4：「OpenCode 基本功 EP05：免費 Big Pickle 與最強 GLM 5.2」
+  - 長片交付：`output/OpenCode 基本功 EP05：免費 Big Pickle 與最強 GLM 5.2 [Claude]/`（5 檔齊全；封面橘色、左免費醃黃瓜 Big Pickle vs 右皇冠 GLM 5.2）
+  - **短片 2 支**（使用者指定主題、由我自選段落拼成完整敘事）：
+    - 「學 AI Agent 的最佳免費 Plan B：Big Pickle」（81.3s）：研習痛點 → Plan B＝Big Pickle → 實測能打
+    - 「AI 自己寫技能：免費生圖＋自動疊中文字」（89.3s）：OpenCode 沒生圖 → GLM 5.2 寫 Draw Free 技能 → 生圖＋疊字 → 打包 repo
+    - 交付：`output/<各短片標題> [Claude] (Short)/`（各 6 檔齊全）
+  - 注意：影片中承諾 **Draw Free 技能 GitHub repo 連結與 OpenCode Go 推薦碼** 放說明欄，上架務必補上
+- **前一支**：**AI Agent 基本功 EP02（核心觀念與初始化設定）長片＋3 支短片全流程交付完成** ✅
+  - 來源：**YouTube 直播下載**（`https://youtube.com/live/gm1ln1Z0hHo`）→ yt-dlp 1080p → `raw/aiagent-ep02/`（原長 78:58 / 435MB；**CFR** 30fps，免轉檔）
+  - **下載坑**：長時間下載先存 `C:\temp` 再搬進 raw，避免 GDrive 同步抓到半成品
+  - smart-cut（threshold 0.06、margin `0sec,0.1sec`，**輸出 C:\temp 再搬回**）→ 52:36（剪 33.4%）。剪輯版有深色投影片（如「四大 Agent 全域設定對照」），抽樣偏暗屬正常非黑畫面
+  - 轉字幕：Groq 13495 字 → resegment 1328 段 → apply_vocab → STOP1 使用者確認 5 處 → 套全部更正 → validate 通過（1328 段全吻合）→ 刪 8 段抖內/喊名 → 最終 1320 段
+  - **本集詞彙更正重點**（觀念課術語多）：
+    - `AI Aging/Aging/AIA群/A群/A局` → Agent；`痊癒/權域/權育` → 全域；`全線(指權限)` → 權限；`Edge/Edging` → Agent
+    - `Tucan/團/圖/肯` → Token；`Compat` → Compact；`GitInitial` → git init；`GitEgnome/Ignome` → .gitignore；`專案出什麼` → 專案初始化
+    - 模型名：`Obs/OPPS` → Opus、`FAPO5` → Fable 5、`Soulnet` → Sonnet、`Dipseek` → DeepSeek、`Artracode` → Ultra（版號保留原文）
+    - **踩坑（新）→ 已解決（2026-06-22）**：resegment 會把詞切在兩段邊界（如「痊癒」被切成段尾「痊」+段首「癒」），舊版逐段 replace 抓不到。`apply_vocab.py` 與 `finalize_subtitles.py` 已改為跨段替換引擎（詳見下方 §「跨段詞彙替換」）
+  - 長片標題使用者選 #4：「AI Agent 基本功 EP02：學習 Agent 必懂的核心觀念與初始化設定」
+  - 長片交付：`output/AI Agent 基本功 EP02：學習 Agent 必懂的核心觀念與初始化設定 [Claude]/`（5 檔齊全；封面橘色、AI 核心＋五觀念節點）
+  - **短片一次交付 3 支** ✅（使用者要 A/B/C 三版都做）：
+    - A 痛點型「AI 越用越笨、用量還爆掉？關鍵是上下文」（50.6s）
+    - B 觀念型「全域放我是誰，專案放我要做什麼」（43.9s）
+    - C 知識型「AI 模型分三級，這樣選又聰明又省錢」（30.4s）
+    - 交付：`output/<各短片標題> [Claude] (Short)/`（各 6 檔齊全）
+  - 注意：影片多次提到「延續 EP01」，上架說明欄放 EP01 連結
+- **前一支**：**AntiGravity EP08（Agent 代理・複製你的聲音／VoxCPM2）長片＋3 支短片全流程交付完成** ✅
+  - 來源：`raw/antigravity-ep08/antigravity-ep08.mp4`（原長 67:58 / 2.2GB；**本片是 CFR**，r=avg=30/1，免轉檔）
+  - smart-cut（threshold 0.06、margin `0sec,0.1sec`，**輸出到 C:\temp 再搬回**避開 GDrive 脫水）→ 42:12（剪 37.9%）
+  - 轉字幕：Groq 10988 字 → resegment 1084 段 → apply_vocab → STOP1 使用者確認 8 處 → 套全部更正 → validate 硬關卡通過（1084 段全吻合）→ 刪 16 段（4 段 CMNNN 亂碼＋12 段抖內/喊名）→ 最終 1068 段
+  - **本集詞彙更正重點**（語音克隆系列可沿用）：
+    - 工具名：`VOXCPM2/Vox CP2/Vox CPM2/VoXcp/VoS CPM2` → **VoxCPM2**；`HyperFran/Hyperplane/Hyper Flame` → **HyperFrame**（使用者拍板）
+    - `Edge/Edging` → Agent；`STT/RTS/PTS/SET` → **TTS**；`Test to Sum` → Text to Speech；`Engine`（指另一代理）→ Agent
+    - 使用者拍板：`名語`→閩南語、`348`→三師爸、3D加速卡**保留**；刪除一段 CMNNN 亂碼；抖內/喊名段全刪
+  - 長片標題：**依檔名** →「AntiGravity 基本功 EP08：Agent 代理，複製你的聲音」
+  - 長片交付：`output/AntiGravity 基本功 EP08：Agent 代理，複製你的聲音 [Claude]/`（5 檔齊全；封面橘色、麥克風＋聲波＋AI 機器人＋FREE）
+  - **短片一次交付 3 支** ✅（使用者要 A/B/C 三版都做）：
+    - A 痛點型「別再付費買 AI 語音了」（65.5s）：00:00:09-13.6 hook → 00:00:21.1-46.5 開源免費 → 00:07:22.1-54.5 能力總結
+    - B 好奇型「老師的聲音，讓 AI 幫你配教學影片」（57.8s）：複製超像 → 可複製/創造 → 老師聲音做教學影片
+    - C 警示型「你的聲音 30 秒就能被複製」（57.3s）：能複製任何人聲音 → 教學應用 → 防詐 AI 素養
+    - 交付：`output/<各短片標題> [Claude] (Short)/`（各 6 檔齊全；C 版封面帶警示紅）
+  - **第 4 支短片（趣味亮點）也已交付** ✅（使用者指定擷取小克×三師爸對談段）：
+    - 標題：「AI 自動生成雙人對話，連貓咪聲音都有」（39.5s）
+    - 組合：00:37:48.2-54.3 下指令開場 ＋ 00:41:11.9-42.3 黑貓小克×三師爸 AI 對談本體
+    - 交付：`output/AI 自動生成雙人對話，連貓咪聲音都有 [Claude] (Short)/`（6 檔齊全；封面可愛黑貓＋雙聲波）
+  - 注意：影片中多次承諾「VoxCPM2 的 GitHub repo 連結放說明欄」，上架務必補上
+- **前一支**：**AI Agent 基本功 EP01（用 Agent 學 Agent）長片＋短片全流程交付完成** ✅
   - 來源：`raw/aiagent-ep01/aiagent-ep01.mp4`（原長 75:20 / 2.44GB，來自使用者 Downloads；**VFR**）
   - **預防 VFR 黑畫面**：剪前先 ffprobe 確認 avg_frame_rate 非整數比 → 先轉 CFR（`-fps_mode cfr -r 30 -crf 18 -c:a copy`）再剪，全程驗證亮度正常
   - **GDrive 寫入坑（新）**：auto-editor 直接輸出到 GDrive 路徑時，檔案會在 smart_cut 報 OK 後消失（疑似 GDrive 同步脫水）。解法：輸出到本機 `C:\temp\`，再 `cp` 搬回專案。建議日後長片 smart-cut 一律輸出本機再搬回。
@@ -109,6 +182,15 @@
   - `output/3 個秘訣 AI Agent 自動剪好教學影片 [Claude] (Short)/`（C 教學型，1:49）
 - 封面均 Claude 橘色主題、SHORT 角標、人物樣貌延續基準照
 - 中途事件：人物基準照因 git 歷史清理被連帶清掉本機，使用者從 `C:/2025三師爸/viewsonic專業形像照/` 重新放回；該檔已 .gitignore，本機需保留
+
+## 跨段詞彙替換（2026-06-22 新增，Claude / Codex 共用）
+- **問題**：字幕清字（`apply_vocab.py`、`finalize_subtitles.py`）原本逐段 `text.replace`，當一個詞被 resegment 切在相鄰兩段邊界時抓不到（實例：aiagent-ep02「痊癒」被切成段 315 尾「痊」+段 316 首「癒」，`痊癒→全域` 失效）。
+- **解法**：兩支腳本都改用「虛擬接合」引擎——把所有段落文字接成一條長字串、記錄每個字屬於哪一段（owner 陣列），在長字串上偵測替換；命中跨段詞時把替換結果**按原長度比例就近分配**回原段落。
+- **保證**：段數不變、時間碼不變、段號不變 → `validate_srt.py` 仍通過。分配時 `new 字數 ≥ 跨越段數` 時保證每段至少 1 字，不會清空段落。
+- **行為相容**：段內命中的替換行為與舊版完全一致；`finalize_subtitles.py` 的段號專屬規則（如 `390:AGE->Agent`）仍只作用單段。
+- **新增規則**：`apply_vocab.py` 已內建 `痊癒→全域`（已知 ASR 誤聽）。
+- **測試**：`python skills/audio-to-srt/scripts/test_cross_segment.py`（10 案例全過，含中/英跨段、CRLF、段號規則不外溢，每案實跑 validate_srt）。
+- **注意**：改的是 `skills/*/scripts/*.py`，**不是** SKILL.md，所以不會被 `sync-skills.ps1` 覆蓋。
 
 ## 已知議題 / 待解問題
 - **VFR 原始檔會讓 auto-editor 輸出黑幀**（EP07 實際踩到：2:37 後全黑、僅剩聲音）。預防：smart-cut 前先 `ffprobe` 看 `avg_frame_rate` 是否為非整數比（如 `260793000/8693101`），是 VFR 就先轉 CFR（`ffmpeg -fps_mode cfr -r 30 -c:v libx264 -crf 18 -c:a copy`）再剪；音訊 copy 不動，剪輯點與時間軸不變。**已修復（2026-06-12）**：`smart_cut.py` 現會自動偵測 VFR 並先轉 CFR 暫存檔再剪、完成後刪暫存檔；SKILL.md 踩坑段亦已補充。
