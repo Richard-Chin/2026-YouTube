@@ -169,11 +169,12 @@ description: Claude Code 專用的 2026Youtube 總控工作流 Skill。當使用
 3. **🛑 STOP 2：三候選版本確認**
    - 組 3 個版本（A 痛點型 / B 好奇型 / C 承諾型 hook），每版三幕結構、≤120s、寫進 `working/<video-id>/shorts-candidates.md`。
    - **列三版時間碼與三幕劇本給使用者，停下等使用者選 A/B/C**（或使用者自給時間碼）。不准自己挑。
-4. **切片組片**：`clip_cut.py` 切片（**對齊字幕段落邊界，不切到一句話中間**）→ 確認 ≤120s → `add_end_card.py` 結尾字卡 → `burn_subtitles.py` 燒字幕。
+4. **切片組片**：`clip_cut.py` 切片（**對齊字幕段落邊界，不切到一句話中間**）→ 確認 ≤120s → `add_end_card.py` 結尾字卡 → `burn_subtitles.py` 燒字幕 → `make_vertical.py` 產 9:16 直式版。
 5. **短片標題（🛑 STOP 3）**：出 3 個更短更聳動的候選等使用者選。
 6. **短片 metadata**：同樣 **Read `references/marketing-spec.md`**，套用其中「C. 短片差異」覆寫（標題 3 個、描述 ≤150 字、`#Shorts` 必備、標籤結尾加 `Shorts,短影片`）。
 
-規格：16:9、≤120s、主色 Claude 橘、輸出 `output/<短片標題> [Claude] (Short)/`，封面/人物基準照沿用同一份。
+規格：16:9 剪輯、≤120s、主色 Claude 橘、輸出 `output/<短片標題> [Claude] (Short)/`，封面/人物基準照沿用同一份。
+**每支短片必加產 9:16 直式版**（YouTube Shorts 發布用）：燒字幕後跑 `make_vertical.py`（模糊背景填充、內容不裁切、1080×1920），輸出檔名 `<短片標題>_直式9x16.mp4`，短片資料夾共 7 檔。
 
 ## 範例：本專案第一支影片的成果參數
 讓你知道實測 OK 的參數長相：

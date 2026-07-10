@@ -6,9 +6,81 @@
 ---
 
 ## 目前狀態（最新）
-- **更新時間**：2026-06-29
-- **最後操作者**：Claude Code（Opus 4.8）
-- **進度**：**AI Agent 基本功 EP03（Agent 的四隻手腳：讀檔/寫程式/上網/出成品）長片全流程交付完成** ✅
+- **更新時間**：2026-07-11
+- **最後操作者**：Claude Code（Fable 5）
+- **進度**：**ChatGPT APP 基本功 EP06（Codex 更名大改版）長片＋3 短片全流程交付完成；並修復 resegment.py「孤兒殘尾」bug** ✅
+  - 🔧 **resegment.py 重大修復（全域＋專案已同步，日後所有影片受益）**：
+    - 症狀：一句話最後 1–2 個字被截到下一段開頭（如「…需要的程」／「式,完全免費!」）
+    - 成因：規則 2 盲信 Whisper segment 邊界（常落在句尾前 1–2 字）＋規則 5 硬切不前瞻
+    - 修法：`punct_ahead()` 前瞻守衛（切前看 1–2 詞內有無標點，有就寬限）＋ `rescue_orphan_tails()` 最終救援（前段無標點收尾時，段首 ≤2 字＋標點殘尾整批搬回前段）＋ 發語詞白名單（好/嗯/欸…開頭不誤搬）
+    - 實測：EP03 真孤兒 11→0、EP04 16→0、EP06 新片 0；發語詞段完好；SKILL.md 已補文件
+    - ⚠️ 跨段替換小坑：清字時若替換詞跨段（如 XHigh），比例分配會把英文詞切成 XHig/h，需手動收回前段
+  - 來源：`ChatGPT APP 基本功第六集...mp4`（38:30 / 1.3GB / 真 CFR 無黑幀）→ `raw/chatgpt-ep06/`；smart-cut → 22:43（剪 41%）
+  - 字幕：Groq 5624 字 → 修正版 resegment 574 段（孤兒 0）→ STOP1 使用者確認 8 項（YL→SOL、Walk→Work、開到早→XHigh、3萬→100萬、龍蝦=遙控工具暱稱保留、Faili→Thinking、和平→權限、Claude GPT→Claude 跟 GPT）→ 67+ 段更正 → validate 通過 → 刪 1 抖內 → 最終 573 段 / 22:41
+  - **本集詞彙更正重點**：ChatGPT APP 變體（ChartGPT/ChatsGPT/CLAGPT/CheckGPTAPP/ClaudeGPT APP/**LGBT應用程式**）、SOL 變體（SOUL/Sold/SORO/Zone）、Terra（ERA/5.6TB）、Luna、Opus 4.8（UP4.8）、Sonnet（Sone）、Netlify/Vercel/Google Sites、世足賽（四足賽）、姆巴佩（巴佩）、託管（脫光）、HTML簡報（HCM簡報）
+  - 內容：Codex 正式更名 ChatGPT APP。三模型 SOL/Terra/Luna（太陽/地球/月球，對標 Opus/Sonnet/Haiku）、對話整合、**內建網站託管**（3D 賽車實演直接發布）、Remote Control 手機遙控、語音=GPT5.5 Thinking、內建生圖；SOL 需 $100 方案、額度重置有期限；講者評：目前第一名、付費首選
+  - 長片標題使用者選 A1：「ChatGPT APP 基本功 EP06：全新改版大解析，教師教學神器一次看懂」；主色**藍色**（GPT 家族）；交付 5 檔
+  - **短片 4 支**（使用者授權標題我定；第 4 支為使用者追加的 Remote Control 段）：A「Codex 沒了！改名 ChatGPT APP，我把第一名頒給它」(54s)／B「一句話生出 3D 賽車，直接發布上線給大家玩」(57s)／C「太陽、地球、月球：ChatGPT 三模型這樣選就對了」(46s)／D「用手機遙控電腦上的 ChatGPT APP，不用帶電腦也能做事」(51s)；各 7 檔（含直式 9x16）
+  - 追加修正：Remote Control 段的「remove」誤聽 → **Remote**（3 處），working 與 output 長片 srt/txt 皆已同步修正
+  - 注意：**頻道系列更名**「GPT Codex 基本功」→「ChatGPT APP 基本功」，上架時考慮新播放清單；長片說明欄放 3D 賽車 demo 網址
+  - 📐 **工作流新規則（2026-07-11 使用者拍板，已寫入 skill）**：**每支短片必加產 9:16 直式版**（YouTube Shorts 發布用）
+    - 新腳本 `skills/short-video-workflow/scripts/make_vertical.py`：模糊背景填充、內容不裁切、1080×1920、自動驗證解析度；輸入用已燒字幕版（字幕跟著前景走，不重燒）
+    - 已更新：`short-video-workflow/SKILL.md`（規格表、Step 6-3、Step 8 檔名 `_直式9x16.mp4`、checklist 7 檔、踩坑）＋ Claude/Codex 兩份總控 SKILL.md 階段 2
+    - EP06 三支短片已回填直式版（各 7 檔）；**更早的短片（EP03/EP04/台語短片）沒有直式版**，要發 Shorts 時可用同腳本補（Codex EP05 三支當時已手動做過直式）
+- **前一支（2026-07-06）**：**AI Agent 基本功 EP04（連接外部工具／MCP 一張地圖）長片＋3 短片全流程交付完成** ✅
+  - 來源：使用者 Downloads `AI Agent基本功_EP04...mp4`（原長 96:14 / 3.3GB；**VFR**）
+  - ⚠️ **重大踩坑（已解，日後注意）**：smart_cut 的 VFR 防護對本片 `avg=519732000/17324401`≈30.0001 **漏判**，auto-editor 吃 VFR → cut 從約 5 分鐘後**全黑幀**（YAVG=0）。修法：手動 `ffmpeg -fps_mode cfr -r 30 -c:v libx264 -preset veryfast -crf 20 -c:a copy` 把原始轉真 CFR（avg=r=30/1）→ 再跑 smart_cut → 亮度全時段 >0。**已 flag 修 smart_cut 任務（task_f5316702）**。凡 VFR 影片剪完務必抽樣多點 YAVG 驗證！
+  - smart-cut（CFR 版）→ 43:59（剪 54.3%）
+  - 轉字幕：Groq 11035 字 → resegment 1124 段 → **本片使用者授權全自動（清字/標題/短片全我決定）** → 大小寫敏感+regex 腳本套 190 段更正 → validate 通過 → 刪 4 抖內 → 最終 1120 段 / 43:58
+  - **本集詞彙更正重點**（超多，MCP/連接器主題）：
+    - Padlet（Pelet/Pallet/Panlet/Pellet/Pedlet/Adlet）、**OAuth**（Auth/oast/Obs/AWS/All-search/OUS/GetOth，**regex `Obs(?!idian)` 保護 Obsidian**）、**Access Token**（AXS Token/Sex2K/Assess2Key/Assesspoken）、**CLI**（Cli/DLI/C-I）、**Wordwall**（WOW/WordWord/WorldWorld/渦污）、**Google Tasks**（Google Desk/GoDesk/Google Dex）、**Google Cloud Console**（Google Claude Console→Cloud）、Canva（Camba/CAMBA/CAMMA）、Classroom（Clusserun）、Firebase（Filebase）、Supabase（Super Base/SuperBass）、PowerShell（PowerShare）、JSON（Jason）、C槽（西朝）、行事曆（形式力）、非Google（FayGoogle）、Agent 家族、權限（全線）、免鑰匙（免要時）、伸出（增出）
+  - 內容：Claude Code 示範連外部工具。兩問題（是否 Google／簡單 vs 完整控制）、四通道（內建連接器/MCP/CLI/直接操控）、權限低→高（免鑰匙→API Key/Access Token→OAuth）；實測 Wordwall/NotebookLM(MCP CLI)/Google Tasks(OAuth 經 Google Cloud Console 超麻煩)；手機 Remote Control 遙控電腦
+  - 主色**橘色**（Claude Code）；長片標題我定：「AI Agent 基本功 EP04：連接外部工具，MCP 與連接器一張地圖講清楚」
+  - 長片交付：`output/AI Agent 基本功 EP04：連接外部工具，MCP 與連接器一張地圖講清楚 [Claude]/`（5 檔；封面橘色 MCP 連接地圖）
+  - **短片 3 支**（使用者授權我自訂標題）：①「別再一個一個學工具，AI 用自然語言全幫你控制」(44.6s) ②「MCP 是什麼？一個轉接頭比喻讓你秒懂」(29.5s) ③「用手機遙控電腦上的 Claude Code，走到哪交代到哪」(31s)；各 6 檔
+  - 注意：長片承諾「連接指南 GitHub repo／Padlet」連結放說明欄，上架務必補
+- **前一支（2026-07-05）**：**AI Agent 教學應用「予 AI 講台語」（免費開源台語教材產生器）長片＋1 精華短片全流程交付完成** ✅
+  - 來源：使用者 Downloads `AI Agent教學應用_予 AI 講台語...mp4`（原長 18:27 / 642MB；**VFR** → smart_cut 自動轉 CFR）→ 歸檔 `raw/taigi-agent/`
+  - smart-cut → 12:22（剪 32.9%）；亮度 ~200 無黑畫面
+  - 轉字幕：Groq 2719 字 → resegment 280 段 → **本片使用者授權全自動（清字/標題/短片全我決定，一次做到好）** → 大小寫敏感腳本套 31 段更正 → validate 通過 → 刪 1 段抖內 → 最終 279 段 / 12:22
+  - **本集詞彙更正重點**：AI-Aging/Aging/Agin/AIAgin/A群→**Agent/AI Agent**、**西朝→C 槽**、**異傳→意傳**（台語語音平台）、Open Code→OpenCode、GitHub report→repo、Claude Codes→Claude Code、台語「菜市仔」變體統一（蔡奇亞/菜奇亞/菜池仔/菜茄子→**菜市仔**）
+    - 註：台語示範播放段（阿嬤/翻牌遊戲音）為 AI 生成台語音，Whisper 無法精準轉寫，保留近似（非主述旁白，影響小）
+  - 內容：Claude Code 示範，把 GitHub repo 丟給 Agent 安裝 → 專案內對話生成台語講義/考卷/語音(意傳官方發音)/教學影片/網頁互動遊戲/PPT；完全免費、免 API Key。核心：用「一個專案資料夾」承接整套複雜工作流
+  - 主色**橘色**（Claude Code 示範）；長片標題我定：「AI Agent 教學應用：予 AI 講台語，免費開源專案一鍵生成台語教材」
+  - 長片交付：`output/AI Agent 教學應用：予 AI 講台語，免費開源專案一鍵生成台語教材 [Claude]/`（5 檔）
+  - **短片只做 1 支**（使用者指定：講解專案能做什麼的最精華一支）：「予 AI 講台語，免費專案生成所有台語教材」（39.9s，6 檔；問題→能生成一切→完全免費→連結）
+  - 注意：長片與短片都承諾「台語專案 GitHub repo」連結放說明欄，上架務必補
+- **前一支（2026-07-04）**：**「教師的第二黑板：自媒體經營術」（三師爸自媒體經營直播）長片＋1 短片（含 16:9＋9:16）全流程交付完成** ✅
+  - 來源：使用者 Downloads `教師的第二黑板-自媒體經營術.mp4`（原長 75:37 / 240MB；**CFR** 30/1、720p，免轉檔）→ 歸檔 `raw/teacher-media/`
+  - smart-cut（threshold 0.06、margin `0sec,0.1sec`，輸出 C:\temp 再搬回）→ 51:34（剪 31.8%）；亮度抽樣 164–217 無黑畫面
+  - 轉字幕：Groq 13250 詞 → resegment 1341 段 → apply_vocab → **STOP1 使用者確認人名**（通閒/崇尚/充賢→**聰賢老師**、海西/凱希→**凱西**、連魚人/連連任長→連育仁、王岐霖→王齊麟、Jomein→Joeman、愛麗莎莎→愛莉莎莎）→ finalize 套 66 段更正 → validate 通過（1341 段全吻合、51:13）→ 未刪段（Padlet 互動段依使用者保留）
+  - **本集詞彙更正重點**（自媒體/教學直播系列可沿用）：日媒體/直媒體/進一字媒體→**自媒體**、教師演習→**教師研習**、後色認知→**後設認知**、平留時間→**停留時間**、出訴/初速→**出書**、廣告分論/分額→**廣告分潤**、腰月延期→**邀約演講**、天文→**貼文**、低促進→**低觸及**、三八人/sumbody→**somebody**、反播性→傳播性、同音程→**同溫層**、寡大→廣大、四文化→次文化、配列→**Padlet**、確訊據查→搜尋、破片→選擇、暈得上→跟得上
+  - 長片標題**Claude 自行拍板**（使用者授權「標題由你決定」）：「認真老師的第二黑板：把影響力放大 10 倍的自媒體經營術」
+  - 長片交付：`output/認真老師的第二黑板 把影響力放大 10 倍的自媒體經營術 [Claude]/`（5 檔；封面**橘色**、綠色黑板＋成長箭頭＋社群圖示）
+  - **短片使用者最後決定只做 1 支**（原本規劃 A/B/C 三支，STOP2 後使用者選「只做 C」）：
+    - C 工具型「5 天 vs 2 小時：AI 怎麼幫老師剪教學影片」（36.64s：33.6s 內容＋3s 字卡）
+    - 時間碼：`00:12:14.300-00:12:47.900`（連續段，切點乾淨）
+    - 交付：`output/5 天 vs 2 小時 AI 怎麼幫老師剪教學影片 [Claude] (Short)/`（**7 檔**：乾淨16:9／字幕16:9／**直式9x16 1080×1920**／srt／txt／cover／metadata）
+  - **⚠️ 本機 ffmpeg 環境踩坑（新，日後沿用解法）**：
+    - `ffmpeg 8.1.2 (gyan.dev)` 的 **drawtext 會直接 segfault**（`Fontconfig error: Cannot load default config file`）→ 結尾字卡改用 **PIL 畫 PNG**（`skills` 未動，臨時腳本）再轉影片
+    - **libass 燒字幕也需 fontconfig** → 建一份 `fonts.conf`（`<dir>C:\Windows\Fonts</dir>`）並 `export FONTCONFIG_FILE=...` 才能燒中文字幕（`subtitles=...:force_style='FontName=Microsoft JhengHei'`）
+    - `-loop 1 -i xxx.png` 會 **parser buffer 溢位**（Failed to reallocate parser buffer to 負值）→ 改用 `-i png` + `loop=loop=-1:size=1,fps=30,trim=duration=3` filter 生成靜態卡影片
+    - Git-Bash 跑含 filter 的 ffmpeg 要 `export MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL='*'`，否則 filter 裡的 `:`／`/path` 被 MSYS 轉義
+    - **`add_end_card.py` 在此環境失效**（drawtext + 硬寫 1920×1080 與 720p 不符）；本次手工繞過。日後若要修 skill：改字卡尺寸吃來源解析度、drawtext 換 PIL 或修 fontconfig
+- **前一支（2026-07-03）**：**GPT Codex 基本功 EP05（Codex 超好用五功能）長片＋3 短片（各含 16:9＋9:16）全流程交付完成** ✅
+  - 來源：使用者 Downloads `GPT Codex 基本功EP05...mp4`（原長 29:40 / 1GB；**VFR！** avg≠r_frame_rate → smart_cut 自動轉 CFR）→ 歸檔 `raw/codex-ep05/`
+  - smart-cut（threshold 0.06、margin `0sec,0.1sec`，輸出 C:\temp 再搬回）→ 16:02（剪 45.9%）；亮度抽樣 ~200 無黑畫面（VFR 轉檔成功）
+  - 轉字幕：Groq 4176 字 → resegment 422 段 → apply_vocab → **本集使用者授權我自行確認清字（跳過 STOP1）** → 大小寫敏感腳本套 25 段更正 → validate 通過（422 段）→ 無抖內段
+  - **本集詞彙更正重點**（Codex 系列沿用）：Versale→**Vercel**、Netify→**Netlify**、Coldex/Podex→**Codex**、AIA菌→**AI Agent**、Compute Use→**Computer Use**、Agent.md→**AGENTS.md**、All Decks→**Codex**（首選推薦）、Edge/agent→Agent、資料獎→資料夾
+  - 長片標題**我自行選定**（使用者授權）：「GPT Codex 基本功 EP05：Codex 超好用的五個隱藏功能」
+  - 長片交付：`output/GPT Codex 基本功 EP05：Codex 超好用的五個隱藏功能 [Claude]/`（5 檔；封面**藍色**Codex 主題、CLI 視窗大「5」+五功能圖示）
+  - **短片 3 支全做**（使用者要全做＋自選主題）——**新增求：每支多產一支 9:16 直式版**：
+    - 目標模式「設好目標，Codex 自動做到完才停」（43.3s）
+    - 語音輸入「Codex 內建語音輸入，免費又準取代付費工具」（40.3s）
+    - Computer Use「讓 Codex 接管瀏覽器，複雜網站自動幫你操作」（44.9s）
+    - 交付：`output/<各短片標題> [Claude] (Short)/`（各 **7 檔**：乾淨 16:9／字幕版 16:9／**直式9x16 1080×1920**／srt／txt／cover／metadata）
+  - **9:16 直式做法（新，日後沿用）**：clip_cut 不支援 aspect；用 ffmpeg 把字幕版 16:9 轉直式——`split` 複製一路 `scale=1080:1920:increase,crop,gblur=sigma=25` 當模糊背景，另一路 `scale=1080:-2` 前景置中 overlay。內容不裁切（螢幕示範不能裁 UI），字幕沿用 16:9 燒錄版
+- **前一支（2026-06-29）**：**AI Agent 基本功 EP03（Agent 的四隻手腳：讀檔/寫程式/上網/出成品）長片＋3 短片全流程交付完成** ✅
   - 來源：使用者 Downloads `AI Agent 基本功 EP03...mp4`（原長 75:10 / 2.6GB；**CFR** 30/1，免轉檔）→ 歸檔 `raw/aiagent-ep03/`
   - smart-cut（threshold 0.06、margin `0sec,0.1sec`，**輸出 C:\temp 再搬回**）→ 48:35（剪 35.4%）；亮度抽樣 ~200/255 無黑畫面
   - 轉字幕：Groq 12615 字 → resegment 1215 段 → apply_vocab → STOP1 使用者確認 8 處 → 自寫大小寫敏感+跨段替換腳本套 115 段更正 → validate 通過（1215 段全吻合）→ 刪 4 段抖內 → 最終 1211 段 / 48:34
@@ -140,10 +212,12 @@
   - 修正：結尾「AA君大君」→「AI 大軍」（長片字幕也一併修正回寫）；段 158「Gemma 4設備」→「Gemma 4 12B」
 
 ## 下一步（給下一個 AI）
-- AntiGravity EP07 長片＋短片**皆已交付**，等待使用者下一步指令。
+- 「教師的第二黑板：自媒體經營術」長片＋C 短片（含直式）**皆已交付**，等待使用者下一步指令。
 - 長片章節時間碼為建議值（metadata.md §5），上傳後請對照成片微調。
-- 上架時記得在說明欄與短片留言區放 Padlet MCP repo 連結（影片中承諾）。
-- 檢查 `raw/` 下尚有：`用 AI Agent 來幫忙寫年度領域課程計畫.mp4`、`AI_agents的基本認識.mp4`、`使用 AI Agent 來自動剪輯教學影片...mp4` 可依需要處理。
+- **短片留言區務必置頂長片連結**（短片承諾「完整版看留言」，且結尾字卡寫「詳細影片請看留言」）。
+- 若日後要補做原規劃的 A（沒有奇蹟只有累積）、B（somebody vs nobody）兩支短片，時間碼已在 `working/teacher-media/shorts-candidates.md`。
+- **ffmpeg 環境問題見上方「本機 ffmpeg 環境踩坑」**——下次剪短片直接沿用（PIL 字卡 + fonts.conf + loop filter + MSYS_NO_PATHCONV）。
+- 原直播為「不回放」，本剪輯版為正式上架版（片中三師爸多次提醒）。
 
 ---
 

@@ -64,10 +64,24 @@ python "%USERPROFILE%/.claude/skills/audio-to-srt/scripts/transcribe_groq.py" \
 ```bash
 python ".../scripts/resegment.py" \
   _subtitles/輸入檔.groq.json \
+  --audio "輸入檔.mp3" \
   --out _subtitles/輸入檔.raw.srt
 ```
 切點優先序：強標點 `。！？` > segment 邊界 > 弱標點 `，、` > 硬切（往回找標點）。
 參數：`MAX_DUR=3.0s`、`MAX_CHARS=15`、`MIN_DUR=0.6s`。
+
+**防孤兒殘尾（2026-07 修正）**：舊版會把「一句話的最後一個字」截到下一段開頭
+（如上段結尾『…需要的程』、下段開頭『式,完全免費!』）。已內建兩層防護：
+1. **前瞻守衛 `punct_ahead()`**：segment 邊界切（規則 2）與硬超標切（規則 5）
+   在動刀前先看後面 1–2 個詞內有沒有標點收尾，有就寬限不切，等標點處自然收尾。
+2. **孤兒救援 `rescue_orphan_tails()`**：切完後最終掃描，凡「前段沒標點收尾」且
+   段首是「≤2 字＋標點」的殘尾，整批搬回前一段。
+   發語詞（『好,』『嗯,』『欸,』…）在兩層都有白名單保護，不會被誤判誤搬。
+實測：兩支 40 分鐘影片的真孤兒殘尾 11→0、16→0，發語詞開頭段完好。
+
+`--audio` 會在斷句後呼叫 `ffmpeg silencedetect` 偵測真實靜音（預設 -35 dB、0.25 s），
+將每段的 end 縮到靜音起點、下一段的 start 延到靜音終點，讓字幕在靜音處自動留白。
+不傳 `--audio` 時維持舊行為（Groq word timestamps 本身無靜音間隔）。
 
 ### Step 6：套用詞彙修正（機械式替換）
 ```bash
