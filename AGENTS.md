@@ -89,5 +89,5 @@ skills/      # 共用 Skill
 
 ## 同步機制
 - Google Drive 自動同步檔案
-- GitHub 是版本備份：`mathruffian-dot/2026-YouTube`
+- GitHub 是版本備份：`Richard-Chin/2026-YouTube`
 - Obsidian 對應筆記：`2026Youtube/工作筆記.md`（給人讀的）
